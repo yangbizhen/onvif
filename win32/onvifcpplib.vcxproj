@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dom.cpp" />
+    <ClCompile Include="duration.c" />
+    <ClCompile Include="mecevp.c" />
+    <ClCompile Include="nsmap.cpp" />
+    <ClCompile Include="smdevp.c" />
+    <ClCompile Include="soapC.cpp" />
+    <ClCompile Include="soapDeviceBindingProxy.cpp" />
+    <ClCompile Include="soapDeviceBindingService.cpp" />
+    <ClCompile Include="soapDeviceIOBindingProxy.cpp" />
+    <ClCompile Include="soapDeviceIOBindingService.cpp" />
+    <ClCompile Include="soapDisplayBindingProxy.cpp" />
+    <ClCompile Include="soapDisplayBindingService.cpp" />
+    <ClCompile Include="soapImagingBindingProxy.cpp" />
+    <ClCompile Include="soapImagingBindingService.cpp" />
+    <ClCompile Include="soapMediaBindingProxy.cpp" />
+    <ClCompile Include="soapMediaBindingService.cpp" />
+    <ClCompile Include="soapPTZBindingProxy.cpp" />
+    <ClCompile Include="soapPTZBindingService.cpp" />
+    <ClCompile Include="soapPullPointSubscriptionBindingProxy.cpp" />
+    <ClCompile Include="soapPullPointSubscriptionBindingService.cpp" />
+    <ClCompile Include="soapReceiverBindingProxy.cpp" />
+    <ClCompile Include="soapReceiverBindingService.cpp" />
+    <ClCompile Include="soapRecordingBindingProxy.cpp" />
+    <ClCompile Include="soapRecordingBindingService.cpp" />
+    <ClCompile Include="soapRemoteDiscoveryBindingProxy.cpp" />
+    <ClCompile Include="soapRemoteDiscoveryBindingService.cpp" />
+    <ClCompile Include="soapReplayBindingProxy.cpp" />
+    <ClCompile Include="soapReplayBindingService.cpp" />
+    <ClCompile Include="soapSearchBindingProxy.cpp" />
+    <ClCompile Include="soapSearchBindingService.cpp" />
+    <ClCompile Include="soapwsddProxy.cpp" />
+    <ClCompile Include="soapwsddService.cpp" />
+    <ClCompile Include="stdsoap2.cpp" />
+    <ClCompile Include="threads.c" />
+    <ClCompile Include="wsaapi.c" />
+    <ClCompile Include="wsseapi.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="duration.h" />
+    <ClInclude Include="mecevp.h" />
+    <ClInclude Include="smdevp.h" />
+    <ClInclude Include="soapDeviceBindingProxy.h" />
+    <ClInclude Include="soapDeviceBindingService.h" />
+    <ClInclude Include="soapDeviceIOBindingProxy.h" />
+    <ClInclude Include="soapDeviceIOBindingService.h" />
+    <ClInclude Include="soapDisplayBindingProxy.h" />
+    <ClInclude Include="soapDisplayBindingService.h" />
+    <ClInclude Include="soapH.h" />
+    <ClInclude Include="soapImagingBindingProxy.h" />
+    <ClInclude Include="soapImagingBindingService.h" />
+    <ClInclude Include="soapMediaBindingProxy.h" />
+    <ClInclude Include="soapMediaBindingService.h" />
+    <ClInclude Include="soapPTZBindingProxy.h" />
+    <ClInclude Include="soapPTZBindingService.h" />
+    <ClInclude Include="soapPullPointSubscriptionBindingProxy.h" />
+    <ClInclude Include="soapPullPointSubscriptionBindingService.h" />
+    <ClInclude Include="soapReceiverBindingProxy.h" />
+    <ClInclude Include="soapReceiverBindingService.h" />
+    <ClInclude Include="soapRecordingBindingProxy.h" />
+    <ClInclude Include="soapRecordingBindingService.h" />
+    <ClInclude Include="soapRemoteDiscoveryBindingProxy.h" />
+    <ClInclude Include="soapRemoteDiscoveryBindingService.h" />
+    <ClInclude Include="soapReplayBindingProxy.h" />
+    <ClInclude Include="soapReplayBindingService.h" />
+    <ClInclude Include="soapSearchBindingProxy.h" />
+    <ClInclude Include="soapSearchBindingService.h" />
+    <ClInclude Include="soapStub.h" />
+    <ClInclude Include="soapwsddProxy.h" />
+    <ClInclude Include="soapwsddService.h" />
+    <ClInclude Include="stdsoap2.h" />
+    <ClInclude Include="threads.h" />
+    <ClInclude Include="wsaapi.h" />
+    <ClInclude Include="wsseapi.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F1570905-1363-469F-B370-82D3B7588F1F}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>onvifcpplib</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>$(ProjectName)</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;WITH_OPENSSL;WITH_DOM;WITH_PURE_VIRTUAL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\3rdparty\openssl-1.0.1g\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;WITH_OPENSSL;WITH_DOM;WITH_PURE_VIRTUAL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\gsoap\gsoap\runtime;..\onvifgen\;..\include\;..\3rdparty\openssl-1.0.1g\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
