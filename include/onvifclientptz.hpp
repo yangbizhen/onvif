@@ -49,6 +49,11 @@ public:
 	int GetStatus(_tptz__GetStatusResponse &StatusResponse,string profileToken);
 	int GetServiceCapabilities(_tptz__GetServiceCapabilitiesResponse &ServiceCapResponse);
 
+	//PresetTour
+	int GetPresetTours(_tptz__GetPresetToursResponse &GetPresetTours, string ProfileToken);
+	int CreatePresetTour(_tptz__CreatePresetTourResponse &CreatePresetTour, string ProfileToken);
+	int OperatePresetTour(_tptz__OperatePresetTourResponse &OperatePresetTour, string PresetTourToken, string ProfileToken, tt__PTZPresetTourOperation PTZPresetTourOperation);
+	int RemovePresetTour(_tptz__RemovePresetTourResponse &RemovePresetTour, string ProfileToken, string PresetTourToken);
 	int Initialize();
 
 private:
@@ -382,6 +387,105 @@ OnvifClientPTZ::~OnvifClientPTZ()
 {
 
 }
+
+int OnvifClientPTZ::GetPresetTours( _tptz__GetPresetToursResponse &GetPresetTours, string ProfileToken )
+{
+	string strUrl;
+	string strUser;
+	string strPass;
+	_tptz__GetPresetTours	GetPresetToursReq;
+	GetPresetToursReq.ProfileToken = ProfileToken;
+
+	if (m_Device.GetUserPasswd(strUser, strPass) == false 
+		|| m_Device.GetPTZUrl(strUrl) == false)
+	{
+		return SOAP_ERR;
+	}
+
+	ptzProxy.soap_endpoint =  strUrl.c_str();
+
+	soap_wsse_add_Security(&ptzProxy);
+	soap_wsse_add_UsernameTokenDigest(&ptzProxy, "Id", 
+		strUser.c_str() , strPass.c_str());
+
+	return ptzProxy.GetPresetTours( &GetPresetToursReq, &GetPresetTours) ;
+}
+
+int OnvifClientPTZ::CreatePresetTour( _tptz__CreatePresetTourResponse &CreatePresetTour, string ProfileToken )
+{
+	string strUrl;
+	string strUser;
+	string strPass;
+	_tptz__CreatePresetTour	CreatePresetTourReq;
+	CreatePresetTourReq.ProfileToken = ProfileToken;
+
+	if (m_Device.GetUserPasswd(strUser, strPass) == false 
+		|| m_Device.GetPTZUrl(strUrl) == false)
+	{
+		return SOAP_ERR;
+	}
+
+	ptzProxy.soap_endpoint =  strUrl.c_str();
+
+	soap_wsse_add_Security(&ptzProxy);
+	soap_wsse_add_UsernameTokenDigest(&ptzProxy, "Id", 
+		strUser.c_str() , strPass.c_str());
+
+	return ptzProxy.CreatePresetTour( &CreatePresetTourReq, &CreatePresetTour) ;
+}
+
+int OnvifClientPTZ::OperatePresetTour( _tptz__OperatePresetTourResponse &OperatePresetTour, string PresetTourToken, string ProfileToken, tt__PTZPresetTourOperation PTZPresetTourOperation )
+{
+	string strUrl;
+	string strUser;
+	string strPass;
+	_tptz__OperatePresetTour	OperatePresetTourReq;
+	OperatePresetTourReq.ProfileToken = ProfileToken;
+	OperatePresetTourReq.PresetTourToken = PresetTourToken;
+	OperatePresetTourReq.Operation = PTZPresetTourOperation;
+
+	if (m_Device.GetUserPasswd(strUser, strPass) == false 
+		|| m_Device.GetPTZUrl(strUrl) == false)
+	{
+		return SOAP_ERR;
+	}
+
+	ptzProxy.soap_endpoint =  strUrl.c_str();
+
+	soap_wsse_add_Security(&ptzProxy);
+	soap_wsse_add_UsernameTokenDigest(&ptzProxy, "Id", 
+		strUser.c_str() , strPass.c_str());
+
+	return ptzProxy.OperatePresetTour( &OperatePresetTourReq, &OperatePresetTour) ;
+}
+
+int OnvifClientPTZ::RemovePresetTour( _tptz__RemovePresetTourResponse &RemovePresetTour, string ProfileToken, string PresetTourToken )
+{
+	string strUrl;
+	string strUser;
+	string strPass;
+	_tptz__RemovePresetTour	RemovePresetTourReq;
+	RemovePresetTourReq.ProfileToken = ProfileToken;
+	RemovePresetTourReq.PresetTourToken = PresetTourToken;
+
+	if (m_Device.GetUserPasswd(strUser, strPass) == false 
+		|| m_Device.GetPTZUrl(strUrl) == false)
+	{
+		return SOAP_ERR;
+	}
+
+	ptzProxy.soap_endpoint =  strUrl.c_str();
+
+	soap_wsse_add_Security(&ptzProxy);
+	soap_wsse_add_UsernameTokenDigest(&ptzProxy, "Id", 
+		strUser.c_str() , strPass.c_str());
+
+	return ptzProxy.RemovePresetTour( &RemovePresetTourReq, &RemovePresetTour) ;
+}
+
+
+
+
 
 
 #endif 

@@ -40,7 +40,10 @@ public:
 	int GetMetadataConfigurations(_trt__GetMetadataConfigurationsResponse &GetMetadataConfigurationsResponse);
 	int GetMetadataConfiguration(_trt__GetMetadataConfigurationResponse &GetMetadataConfigurationResponse,string profileToken);
 	int GetMetadataConfigurationOptions(_trt__GetMetadataConfigurationOptionsResponse &GetMetadataConfigurationOptionsResponse,string ConfigToken,string profileToken);
-
+	//encode
+	int	GetVideoEncoderConfigurations(_trt__GetVideoEncoderConfigurationsResponse &GetVideoEncoderConfigurationsResponse);
+	int GetVideoEncoderConfigurationOptions(_trt__GetVideoEncoderConfigurationOptionsResponse &GetVideoEncoderConfigurationOptionsResponse, string ConfigurationToken,string profileToken);
+	int	GetVideoEncoderConfiguration(_trt__GetVideoEncoderConfigurationResponse &GetVideoEncoderConfigurationResponse, string ConfigurationToken);
 private:
 	OnvifClientDevice &m_Device;
 	MediaBindingProxy  mediaProxy;
@@ -314,6 +317,8 @@ OnvifClientMedia::OnvifClientMedia(OnvifClientDevice &device)
 
 }
 
+
+
 OnvifClientMedia::~OnvifClientMedia()
 {
 
@@ -381,6 +386,70 @@ inline int OnvifClientMedia::GetSnapshotUri(_trt__GetSnapshotUriResponse &Snapsh
 	return mediaProxy.GetSnapshotUri(&SnapshotUriReq, &SnapshotUriResponse);
 
 }
+
+int OnvifClientMedia::GetVideoEncoderConfigurations( _trt__GetVideoEncoderConfigurationsResponse &GetVideoEncoderConfigurationsResponse )
+{
+	string strUrl;
+	string strUser;
+	string strPass;
+	if (m_Device.GetUserPasswd(strUser, strPass) == false 
+		|| m_Device.GetMediaUrl(strUrl) == false)
+	{
+		return SOAP_ERR;
+	}
+	mediaProxy.soap_endpoint =  strUrl.c_str();
+	soap_wsse_add_Security(&mediaProxy);
+	soap_wsse_add_UsernameTokenDigest(&mediaProxy, "Id", strUser.c_str() , strPass.c_str());
+
+	_trt__GetVideoEncoderConfigurations GetVideoEncoderConfigurationsReq;
+
+	return mediaProxy.GetVideoEncoderConfigurations(&GetVideoEncoderConfigurationsReq, &GetVideoEncoderConfigurationsResponse);
+}
+
+int OnvifClientMedia::GetVideoEncoderConfigurationOptions( _trt__GetVideoEncoderConfigurationOptionsResponse &GetVideoEncoderConfigurationOptionsResponse,string ConfigurationToken,string profileToken )
+{
+	string strUrl;
+	string strUser;
+	string strPass;
+	if (m_Device.GetUserPasswd(strUser, strPass) == false 
+		|| m_Device.GetMediaUrl(strUrl) == false)
+	{
+		return SOAP_ERR;
+	}
+	mediaProxy.soap_endpoint =  strUrl.c_str();
+	soap_wsse_add_Security(&mediaProxy);
+	soap_wsse_add_UsernameTokenDigest(&mediaProxy, "Id", strUser.c_str() , strPass.c_str());
+
+	_trt__GetVideoEncoderConfigurationOptions GetVideoEncoderConfigurationOptionsReq;
+	GetVideoEncoderConfigurationOptionsReq.ConfigurationToken = &ConfigurationToken;
+	GetVideoEncoderConfigurationOptionsReq.ProfileToken = &profileToken;
+
+	return mediaProxy.GetVideoEncoderConfigurationOptions(&GetVideoEncoderConfigurationOptionsReq,&GetVideoEncoderConfigurationOptionsResponse);
+}
+
+int OnvifClientMedia::GetVideoEncoderConfiguration( _trt__GetVideoEncoderConfigurationResponse &GetVideoEncoderConfigurationResponse, string ConfigurationToken )
+{
+	string strUrl;
+	string strUser;
+	string strPass;
+	if (m_Device.GetUserPasswd(strUser, strPass) == false 
+		|| m_Device.GetMediaUrl(strUrl) == false)
+	{
+		return SOAP_ERR;
+	}
+	mediaProxy.soap_endpoint =  strUrl.c_str();
+	soap_wsse_add_Security(&mediaProxy);
+	soap_wsse_add_UsernameTokenDigest(&mediaProxy, "Id", strUser.c_str() , strPass.c_str());
+
+	_trt__GetVideoEncoderConfiguration GetVideoEncoderConfigurationReq;
+	GetVideoEncoderConfigurationReq.ConfigurationToken = ConfigurationToken;
+	
+
+	return mediaProxy.GetVideoEncoderConfiguration(&GetVideoEncoderConfigurationReq, &GetVideoEncoderConfigurationResponse);
+}
+
+
+
 
 
 
